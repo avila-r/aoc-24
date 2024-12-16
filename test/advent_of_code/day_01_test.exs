@@ -4,14 +4,14 @@ defmodule AdventOfCode.Day01Test do
   import AdventOfCode.Day01
 
   test "part1" do
-    result = part1(input())
+    result = part1(AdventOfCode.Input.Day01.get())
 
-    assert result == 2264607
+    assert result == 2_264_607
   end
 
   test "part2" do
-    result = part2(input())
+    result = part2(AdventOfCode.Input.Day01.get())
 
-    assert result == 19457120
+    assert result == 19_457_120
   end
 end
