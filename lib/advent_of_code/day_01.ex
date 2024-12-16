@@ -14,11 +14,8 @@ defmodule AdventOfCode.Day01 do
     end)
   end
 
-  def part1(input) do
-    input
-    |> then(fn {left, right} ->
-      zip(sort(left), sort(right))
-    end)
+  def part1({left, right}) do
+    zip(sort(left), sort(right))
     |> reduce(0, fn {a, b}, d -> d + abs(a - b) end)
   end
 
