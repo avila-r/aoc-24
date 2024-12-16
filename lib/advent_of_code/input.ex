@@ -28,4 +28,13 @@ defmodule AdventOfCode.Input do
       end)
     end
   end
+
+  defmodule Day03 do
+    def get,
+      do:
+        File.read!("inputs/d03.txt")
+        |> parse()
+
+    def parse(input), do: input
+  end
 end
