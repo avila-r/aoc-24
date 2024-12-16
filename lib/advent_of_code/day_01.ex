@@ -23,9 +23,7 @@ defmodule AdventOfCode.Day01 do
   end
 
   def part2({left, right}) do
-    frequencies =
-      right
-      |> frequencies()
+    frequencies = frequencies(right)
 
     left
     |> reduce(0, fn n, acc ->
