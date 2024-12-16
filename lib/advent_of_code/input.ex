@@ -13,4 +13,19 @@ defmodule AdventOfCode.Input do
           }
         end)
   end
+
+  defmodule Day02 do
+    def get,
+      do:
+        File.read!("inputs/d02.txt")
+        |> parse()
+
+    def parse(input) do
+      input
+      |> String.split("\n")
+      |> Enum.reduce([], fn line, acc ->
+        acc ++ [line |> String.split(" ") |> Enum.map(&String.to_integer/1)]
+      end)
+    end
+  end
 end
