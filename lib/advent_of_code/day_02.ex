@@ -8,8 +8,6 @@ defmodule AdventOfCode.Day02 do
   end
 
   def part2(input) do
-    IO.inspect(input)
-
     input
     |> filter(fn report ->
       safe?(report) or
