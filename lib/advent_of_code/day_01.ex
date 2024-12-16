@@ -1,8 +1,10 @@
 defmodule AdventOfCode.Day01 do
+  import Enum
+
   def input do
     File.read!("inputs/d01.txt")
     |> String.split("\n")
-    |> Enum.reduce({[], []}, fn line, {first, second} ->
+    |> reduce({[], []}, fn line, {first, second} ->
       [left, right] = String.split(line, "   ")
 
       {
@@ -11,8 +13,6 @@ defmodule AdventOfCode.Day01 do
       }
     end)
   end
-
-  import Enum
 
   def part1(input) do
     input
