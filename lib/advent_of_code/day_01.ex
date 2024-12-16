@@ -23,9 +23,13 @@ defmodule AdventOfCode.Day01 do
   end
 
   def part2({left, right}) do
+    frequencies =
+      right
+      |> frequencies()
+
     left
     |> reduce(0, fn n, acc ->
-      acc + n * Map.get(frequencies(right), n, 0)
+      acc + n * Map.get(frequencies, n, 0)
     end)
   end
 end
