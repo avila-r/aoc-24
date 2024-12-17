@@ -1,6 +1,6 @@
 # Advent of Code within Elixir!
 
-## Structure
+**Structure:**
 
 There are 25 modules, 25 tests, and 50 mix tasks.
 
