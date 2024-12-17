@@ -1,6 +1,4 @@
-# Advent of Code in Elixir
-
-Advent of Code participation using a [starter pack](https://github.com/mhanberg/advent-of-code-elixir-starter) for Elixir!
+# Advent of Code within Elixir!
 
 ## Structure
 
@@ -12,10 +10,10 @@ There are 25 modules, 25 tests, and 50 mix tasks.
 
 ```elixir
 defmodule AdventOfCode.Day01 do
-  def part1(args) do
+  def part1(input) do
   end
 
-  def part2(args) do
+  def part2(input) do
   end
 end
 ```
@@ -26,7 +24,6 @@ defmodule AdventOfCode.Day01Test do
 
   import AdventOfCode.Day01
 
-  @tag :skip # Make sure to remove to run your test.
   test "part1" do
     input = nil
     result = part1(input)
@@ -34,7 +31,6 @@ defmodule AdventOfCode.Day01Test do
     assert result
   end
 
-  @tag :skip # Make sure to remove to run your test.
   test "part2" do
     input = nil
     result = part2(input)
@@ -52,7 +48,7 @@ defmodule Mix.Tasks.D01.P1 do
 
   @shortdoc "Day 01 Part 1"
   def run(args) do
-    input = AdventOfCode.Input.get!(1, 2020)
+    input = AdventOfCode.Input.Day01.get()
 
     if Enum.member?(args, "-b"),
       do: Benchee.run(%{part_1: fn -> input |> part1() end}),
