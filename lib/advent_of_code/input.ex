@@ -58,4 +58,36 @@ defmodule AdventOfCode.Input do
       end)
     end
   end
+
+  defmodule Day05 do
+    def get do
+      File.read!("inputs/d05.txt")
+      |> parse()
+    end
+
+    def parse(input) do
+      [up, down] = String.split(input, "\n\n", parts: 2)
+
+      rules =
+        up
+        |> String.split("\n")
+        |> Enum.map(fn line ->
+          line
+          |> String.split("|")
+          |> Enum.map(&String.to_integer/1)
+          |> List.to_tuple()
+        end)
+
+      updates =
+        down
+        |> String.split("\n", trim: true)
+        |> Enum.map(fn line ->
+          line
+          |> String.split(",")
+          |> Enum.map(&String.to_integer/1)
+        end)
+
+      {rules, updates}
+    end
+  end
 end
