@@ -37,4 +37,25 @@ defmodule AdventOfCode.Input do
 
     def parse(input), do: input
   end
+
+  defmodule Day04 do
+    def get do
+      File.read!("inputs/d04.txt")
+      |> parse()
+    end
+
+    def parse(input) do
+      input
+      |> String.split("\n", trim: true)
+      |> Enum.with_index()
+      |> Enum.reduce(%{}, fn {line, row}, acc ->
+        line
+        |> String.graphemes()
+        |> Enum.with_index()
+        |> Enum.reduce(acc, fn {char, col}, acc ->
+          Map.put(acc, {row, col}, String.to_charlist(char) |> hd())
+        end)
+      end)
+    end
+  end
 end
