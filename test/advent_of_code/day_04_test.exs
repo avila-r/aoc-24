@@ -3,19 +3,45 @@ defmodule AdventOfCode.Day04Test do
 
   import AdventOfCode.Day04
 
-  @tag :skip
   test "part1" do
-    input = nil
+    input =
+      """
+      MMMSXXMASM
+      MSAMXMSMSA
+      AMXSXMAAMM
+      MSAMASMSMX
+      XMASAMXAMM
+      XXAMMXXAMA
+      SMSMSASXSS
+      SAXAMASAAA
+      MAMMMXMMMM
+      MXMXAXMASX
+      """
+      |> AdventOfCode.Input.Day04.parse()
+
     result = part1(input)
 
-    assert result
+    assert result == 18
   end
 
-  @tag :skip
   test "part2" do
-    input = nil
+    input =
+      """
+      .M.S......
+      ..A..MSMS.
+      .M.S.MAA..
+      ..A.ASMSM.
+      .M.S.M....
+      ..........
+      S.S.S.S.S.
+      .A.A.A.A..
+      M.M.M.M.M.
+      ..........
+      """
+      |> AdventOfCode.Input.Day04.parse()
+
     result = part2(input)
 
-    assert result
+    assert result == 9
   end
 end
