@@ -90,4 +90,33 @@ defmodule AdventOfCode.Input do
       {rules, updates}
     end
   end
+
+  defmodule Day06 do
+    def get do
+      File.read!("inputs/d03.txt")
+      |> parse()
+    end
+
+    def parse(input) do
+      positions =
+        input
+        |> String.trim()
+        |> String.split("\n")
+        |> Enum.with_index()
+        |> Enum.reduce(%{}, fn {i, j}, acc ->
+          i
+          |> String.to_charlist()
+          |> Enum.with_index()
+          |> Enum.reduce(acc, fn {char, col}, acc ->
+            Map.put(acc, {j, col}, char)
+          end)
+        end)
+
+      positions
+      |> Enum.find(fn {_, c} -> c === ?^ end)
+      |> then(fn {{row, col}, _} ->
+        {{{row, col}, {-1, 0}}, Map.put(positions, {row, col}, ?.)}
+      end)
+    end
+  end
 end
