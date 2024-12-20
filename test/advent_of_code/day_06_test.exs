@@ -42,9 +42,6 @@ defmodule AdventOfCode.Day06Test do
 
     result = part2(input)
 
-    result
-    |> IO.inspect(label: "Result")
-
     assert result == 6
   end
 end
