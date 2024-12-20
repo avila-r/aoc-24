@@ -93,7 +93,7 @@ defmodule AdventOfCode.Input do
 
   defmodule Day06 do
     def get do
-      File.read!("inputs/d03.txt")
+      File.read!("inputs/d06.txt")
       |> parse()
     end
 
@@ -118,5 +118,14 @@ defmodule AdventOfCode.Input do
         {{{row, col}, {-1, 0}}, Map.put(positions, {row, col}, ?.)}
       end)
     end
+  end
+
+  defmodule Day07 do
+    def get do
+      File.read!("inputs/d07.txt")
+      |> parse()
+    end
+
+    def parse(input), do: input
   end
 end
