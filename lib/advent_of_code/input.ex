@@ -126,6 +126,23 @@ defmodule AdventOfCode.Input do
       |> parse()
     end
 
-    def parse(input), do: input
+    def parse(input) do
+      input
+      |> String.split("\n", trim: true)
+      |> Enum.map(fn line ->
+        [head, tail] = String.split(line, ": ", parts: 2)
+
+        expected =
+          head
+          |> String.to_integer()
+
+        equation =
+          tail
+          |> String.split(" ")
+          |> Enum.map(&String.to_integer/1)
+
+        {expected, equation}
+      end)
+    end
   end
 end
