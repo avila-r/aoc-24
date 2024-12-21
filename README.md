@@ -35,12 +35,12 @@ end
 ```
 
 ```elixir
-defmodule Mix.Tasks.D01.P1 do
+defmodule Mix.Tasks.DX.P1 do
   use Mix.Task
 
   import AdventOfCode.DayX
 
-  @shortdoc "Day 0X Part 1"
+  @shortdoc "Day X Part 1"
   def run(args) do
     input = AdventOfCode.Input.DayX.get()
 
