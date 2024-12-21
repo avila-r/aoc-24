@@ -145,4 +145,34 @@ defmodule AdventOfCode.Input do
       end)
     end
   end
+
+  defmodule Day08 do
+    def get do
+      File.read!("inputs/d08.txt")
+      |> parse()
+    end
+
+    def parse(input) do
+      lines =
+        input
+        |> String.split("\n", trim: true)
+
+      grid =
+        for {line, y} <- lines |> Enum.with_index(),
+            {char, x} <- line |> String.graphemes() |> Enum.with_index(),
+            char != ".",
+            into: %{} do
+          {{x, y}, char}
+        end
+
+      bounds = {
+        0,
+        String.length(hd(lines)) - 1,
+        0,
+        Enum.count(lines) - 1
+      }
+
+      {grid, bounds}
+    end
+  end
 end
