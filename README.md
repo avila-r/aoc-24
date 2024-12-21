@@ -6,10 +6,10 @@ There are 25 modules, 25 tests, and 50 mix tasks.
 
 1. Tests filled with example solutions.
 2. Solutions can be executed by `mix d01.p1`!
-    - Benchmark your solution by passing the `-b` flag, `mix d01.p1 -b`
+    - Benchmark the solution by passing the `-b` flag, `mix d01.p1 -b`
 
 ```elixir
-defmodule AdventOfCode.Day01 do
+defmodule AdventOfCode.DayX do
   def part1(input) do
   end
 
@@ -19,24 +19,18 @@ end
 ```
 
 ```elixir
-defmodule AdventOfCode.Day01Test do
+defmodule AdventOfCode.DayXTest do
   use ExUnit.Case
 
-  import AdventOfCode.Day01
+  import AdventOfCode.DayX
 
-  test "part1" do
-    input = nil
-    result = part1(input)
+  @input """
+         ?
+         """
+         |> AdventOfCode.Input.DayX.parse()
 
-    assert result
-  end
-
-  test "part2" do
-    input = nil
-    result = part2(input)
-
-    assert result
-  end
+  test "part1", do: assert(part1(@input) == ?)
+  test "part2", do: assert(part2(@input) == ?)
 end
 ```
 
@@ -44,11 +38,11 @@ end
 defmodule Mix.Tasks.D01.P1 do
   use Mix.Task
 
-  import AdventOfCode.Day01
+  import AdventOfCode.DayX
 
-  @shortdoc "Day 01 Part 1"
+  @shortdoc "Day 0X Part 1"
   def run(args) do
-    input = AdventOfCode.Input.Day01.get()
+    input = AdventOfCode.Input.DayX.get()
 
     if Enum.member?(args, "-b"),
       do: Benchee.run(%{part_1: fn -> input |> part1() end}),
