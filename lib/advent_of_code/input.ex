@@ -216,4 +216,17 @@ defmodule AdventOfCode.Input do
       |> Map.new()
     end
   end
+
+  defmodule Day11 do
+    def get do
+      "3 386358 86195 85 1267 3752457 0 741"
+      |> parse()
+    end
+
+    def parse(input) do
+      input
+      |> String.split([" ", "\n"], trim: true)
+      |> Enum.reduce(%{}, fn x, acc -> Map.update(acc, String.to_integer(x), 1, &(&1 + 1)) end)
+    end
+  end
 end
