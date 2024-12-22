@@ -3,19 +3,9 @@ defmodule AdventOfCode.Day11Test do
 
   import AdventOfCode.Day11
 
-  @tag :skip
-  test "part1" do
-    input = nil
-    result = part1(input)
+  @input "125 17"
+         |> AdventOfCode.Input.Day11.parse()
 
-    assert result
-  end
-
-  @tag :skip
-  test "part2" do
-    input = nil
-    result = part2(input)
-
-    assert result
-  end
+  test "part1", do: assert(@input |> part1 == 55312)
+  test "part2", do: assert(@input |> part2 == 65_601_038_650_482)
 end
