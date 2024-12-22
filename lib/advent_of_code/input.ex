@@ -175,4 +175,26 @@ defmodule AdventOfCode.Input do
       {grid, bounds}
     end
   end
+
+  defmodule Day09 do
+    def get do
+      File.read!("inputs/d09.txt")
+      |> parse()
+    end
+
+    def parse(input) do
+      chunks =
+        input
+        |> String.split("", trim: true)
+        |> Enum.reject(&(&1 == "\n"))
+        |> Enum.map(&String.to_integer/1)
+        |> Enum.chunk_every(2, 2)
+        |> Enum.with_index()
+
+      Enum.reduce(chunks, {[], [], 0}, fn {[head | rest], id}, {blocks, blanks, c} ->
+        new = if((n = List.first(rest) || 0) > 0, do: (c + head)..(c + head + n - 1), else: ..)
+        {blocks ++ [{id, c..(c + head - 1)}], blanks ++ [new], c + head + n}
+      end)
+    end
+  end
 end
