@@ -197,4 +197,23 @@ defmodule AdventOfCode.Input do
       end)
     end
   end
+
+  defmodule Day10 do
+    def get do
+      File.read!("inputs/d10.txt")
+      |> parse()
+    end
+
+    def parse(input) do
+      input
+      |> String.split("\n", trim: true)
+      |> Enum.with_index()
+      |> Enum.flat_map(fn {l, r} ->
+        String.to_charlist(l)
+        |> Enum.with_index()
+        |> Enum.flat_map(fn {char, c} -> [{{r, c}, char - ?0}] end)
+      end)
+      |> Map.new()
+    end
+  end
 end
