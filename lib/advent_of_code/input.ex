@@ -229,4 +229,25 @@ defmodule AdventOfCode.Input do
       |> Enum.reduce(%{}, fn x, acc -> Map.update(acc, String.to_integer(x), 1, &(&1 + 1)) end)
     end
   end
+
+  defmodule Day12 do
+    def get do
+      File.read!("inputs/d12.txt")
+      |> parse()
+    end
+
+    def parse(input) do
+      input
+      |> String.split("\n", trim: true)
+      |> Enum.with_index()
+      |> Enum.reduce(Map.new(), fn {row, r}, map ->
+        row
+        |> String.graphemes()
+        |> Enum.with_index()
+        |> Enum.reduce(map, fn {col, c}, m ->
+          Map.put(m, {r + 1, c + 1}, col)
+        end)
+      end)
+    end
+  end
 end
