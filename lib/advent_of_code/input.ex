@@ -262,4 +262,31 @@ defmodule AdventOfCode.Input do
       |> String.split("\n\n")
     end
   end
+
+  defmodule Day14 do
+    def get do
+      File.read!("inputs/d14.txt")
+      |> parse()
+    end
+
+    def parse(input) do
+      lines =
+        input
+        |> String.split("\n", trim: true)
+
+      positions =
+        lines
+        |> Enum.map(fn line ->
+          [_, x, y] = ~r/p=(\d+),(\d+)/ |> Regex.run(line)
+          {String.to_integer(x), String.to_integer(y)}
+        end)
+
+      {min_x, max_x, min_y, max_y} =
+        Enum.reduce(positions, {0, 0, 0, 0}, fn {x, y}, {min_x, max_x, min_y, max_y} ->
+          {min(min_x, x), max(max_x, x), min(min_y, y), max(max_y, y)}
+        end)
+
+      {lines, {max_x - min_x + 1, max_y - min_y + 1}}
+    end
+  end
 end
