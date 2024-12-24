@@ -250,4 +250,16 @@ defmodule AdventOfCode.Input do
       end)
     end
   end
+
+  defmodule Day13 do
+    def get do
+      File.read!("inputs/d13.txt")
+      |> parse()
+    end
+
+    def parse(input) do
+      input
+      |> String.split("\n\n")
+    end
+  end
 end
