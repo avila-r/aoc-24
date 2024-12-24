@@ -289,4 +289,19 @@ defmodule AdventOfCode.Input do
       {lines, {max_x - min_x + 1, max_y - min_y + 1}}
     end
   end
+
+  defmodule Day15 do
+    def get do
+      File.read!("inputs/d15.txt")
+      |> parse()
+    end
+
+    def parse(input) do
+      [map, moves] =
+        input
+        |> String.split("\n\n")
+
+      {map, moves}
+    end
+  end
 end
