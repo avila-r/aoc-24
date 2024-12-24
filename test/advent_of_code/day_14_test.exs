@@ -20,5 +20,7 @@ defmodule AdventOfCode.Day14Test do
          |> parse()
 
   test "part1", do: assert(@input |> part1() == 12)
-  test "part2", do: @input |> IO.inspect(label: "Input")
+
+  test "part2" do
+  end
 end
