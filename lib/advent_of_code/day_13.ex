@@ -1,37 +1,39 @@
 defmodule AdventOfCode.Day13 do
+  import Enum
+
   def part1(input) do
     input
-    |> Enum.map(fn l -> unwrap(l) |> tokens() end)
-    |> Enum.flat_map(fn
+    |> map(fn l -> unwrap(l) |> tokens() end)
+    |> flat_map(fn
       [a, b] when a <= 100 and b <= 100 -> [3 * a + b]
       _ -> []
     end)
-    |> Enum.sum()
+    |> sum()
   end
 
   def part2(input) do
     input
-    |> Enum.map(fn l ->
+    |> map(fn l ->
       l
       |> then(fn _ ->
         l
         |> unwrap()
-        |> then(fn [a, b, c] -> [a, b, Enum.map(c, &(&1 + 10_000_000_000_000))] end)
+        |> then(fn [a, b, c] -> [a, b, map(c, &(&1 + 10_000_000_000_000))] end)
       end)
       |> tokens()
     end)
-    |> Enum.flat_map(fn
+    |> flat_map(fn
       [a, b] -> [3 * a + b]
       _ -> []
     end)
-    |> Enum.sum()
+    |> sum()
   end
 
   defp unwrap(line) do
     parse = fn s, c ->
       s
       |> String.split(", ")
-      |> Enum.map(&(&1 |> String.split(c) |> Enum.at(1) |> String.to_integer()))
+      |> map(&(&1 |> String.split(c) |> at(1) |> String.to_integer()))
     end
 
     ["Button A: " <> a, "Button B: " <> b, "Prize: " <> c] =
