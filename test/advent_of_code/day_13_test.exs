@@ -3,19 +3,11 @@ defmodule AdventOfCode.Day13Test do
 
   import AdventOfCode.Day13
 
-  @tag :skip
-  test "part1" do
-    input = nil
-    result = part1(input)
-
-    assert result
+  defp input do
+    File.read!("inputs/d13.test.txt")
+    |> AdventOfCode.Input.Day13.parse()
   end
 
-  @tag :skip
-  test "part2" do
-    input = nil
-    result = part2(input)
-
-    assert result
-  end
+  test "part1", do: assert(input() |> part1() == 480)
+  test "part2", do: assert(input() |> part2() == 875_318_608_908)
 end
